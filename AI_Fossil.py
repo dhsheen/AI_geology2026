@@ -87,10 +87,12 @@ def AI_model_load(WPATH):
     print('분류 후보:', ', '.join(class_names))  
 
 ######################################################
-def classify_fossil(photo_path, top_k=3):
+def classify_fossil(photo_file, top_k=3):
     # 전역 변수 사용 선언
-    global device, model, preprocess, class_names
+    global device, model, preprocess, class_names, PROJECT
 
+    photo_path = PROJECT / photo_file
+    
     if model is None or preprocess is None:
         raise RuntimeError("모델이 로드되지 않았습니다. 먼저 AI_model_load()를 실행해 주세요.")
 
